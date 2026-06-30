@@ -1,73 +1,37 @@
-# React + TypeScript + Vite
+# 🩺 DocTime — Online Medical Booking Platform
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+DocTime is a modern, responsive medical appointment booking platform. This project was built to demonstrate proficiency in React, TypeScript, and modern front-end development standards.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🚀 Features
 
-## React Compiler
+- **Modern RTL Interface**: Optimized for Persian users.
+- **Search System**: Robust search with URL query parameters.
+- **Responsive Design**: Mobile-first approach using Tailwind CSS v4.
+- **Dark Mode**: Seamless theme switching.
+- **Scalable Architecture**: Modular folder structure for easy maintenance.
+- **Production-Ready**: Optimized build configurations.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 🛠️ Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **Framework**: React 18
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS v4
+- **Routing**: React Router
+- **Build Tool**: Vite
+- **Development**: ESLint + Prettier
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 🏗️ Project Structure
+```text
+src/
+ ├── assets/          # Static assets (images, fonts)
+ ├── components/      # Reusable UI components
+ ├── layouts/         # Layout wrappers
+ ├── pages/           # Page components (Home, Search, etc.)
+ ├── App.tsx          # Main routing logic
+ └── main.tsx         # Entry point

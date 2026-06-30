@@ -1,22 +1,33 @@
-import { Routes, Route } from 'react-router-dom';
-import MainLayout from './layouts/MainLayout';
-import Home from './pages/Home';
-import Doctors from './pages/Doctors';
-import LoginPage from './pages/LoginPage';
-import Register from './pages/Register';
-import Dashboard from './pages/Dashboard';
+﻿import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import MainLayout from "./layouts/MainLayout";
+
+import Home from "./pages/Home";
+import SearchResults from "./pages/SearchResults";
+import Specialties from "./pages/Specialties";
+import Centers from "./pages/Centers";
+import Consult from "./pages/Consult";
+import Mag from "./pages/Mag";
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<MainLayout />}>
-        <Route index element={<Home />} />
-        <Route path="doctors" element={<Doctors />} />
-        <Route path="login" element={<LoginPage />} />
-        <Route path="register" element={<Register />} />
-        <Route path="dashboard" element={<Dashboard />} />
-      </Route>
-    </Routes>
+    <BrowserRouter>
+      <Routes>
+
+        <Route element={<MainLayout />}>
+
+          <Route path="/" element={<Home />} />
+          <Route path="/search" element={<SearchResults />} />
+          <Route path="/specialties" element={<Specialties />} />
+          <Route path="/centers" element={<Centers />} />
+          <Route path="/consult" element={<Consult />} />
+          <Route path="/mag" element={<Mag />} />
+
+        </Route>
+
+      </Routes>
+    </BrowserRouter>
   );
 }
+
 export default App;
