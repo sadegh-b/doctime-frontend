@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom"
+
 type Doctor = {
   id: number
   name: string
@@ -44,6 +46,7 @@ export default function DoctorCard({
 
       {/* Rating */}
       <div className="flex items-center justify-between mb-4">
+
         <span className="text-yellow-500 font-semibold">
           ⭐ {doctor.rating}
         </span>
@@ -51,12 +54,17 @@ export default function DoctorCard({
         <span className="text-sm text-green-600 font-medium">
           {doctor.nextAvailable || "امروز نوبت دارد"}
         </span>
+
       </div>
 
       {/* CTA */}
-      <button className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2.5 rounded-xl font-medium transition">
+      <Link
+        to={`/doctor/${doctor.id}`}
+        className="block w-full text-center bg-blue-600 hover:bg-blue-700 text-white py-2.5 rounded-xl font-medium transition"
+      >
         مشاهده پروفایل
-      </button>
+      </Link>
+
     </div>
   )
 }
