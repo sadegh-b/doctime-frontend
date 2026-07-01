@@ -1,0 +1,61 @@
+{
+  "doctors": [
+    {
+      "id": 1,
+      "name": "دکتر علی رضایی",
+      "specialty": "قلب و عروق",
+      "city": "تهران",
+      "rate": "4.8",
+      "reviews": "124",
+      "image": "AR",
+      "experience": "15 سال تجربه",
+      "medicalCode": "12345",
+      "fee": "250000",
+      "visitType": "حضوری",
+      "insurance": ["تامین اجتماعی", "سلامت"]
+    }
+  ],
+
+  "schedules": [
+    {
+      "id": 1,
+      "doctorId": 1,
+      "day": "2026-07-02",
+      "slots": [
+        "09:00",
+        "09:30",
+        "10:00",
+        "10:30",
+        "11:00",
+        "11:30"
+      ]
+    }
+  ],
+
+  "appointments": []
+}
+"users": [
+  {
+    "id": 1,
+    "name": "Ali",
+    "email": "ali@test.com",
+    "password": "123456",
+    "role": "patient"
+  }
+]
+"reviews": [
+  {
+    "id": 1,
+    "doctorId": 1,
+    "patientName": "علی",
+    "rating": 5,
+    "comment": "پزشک بسیار با دقت و خوش برخورد بود"
+  },
+  {
+    "id": 2,
+    "doctorId": 1,
+    "patientName": "مریم",
+    "rating": 4,
+    "comment": "ویزیت خوب و توضیحات کامل"
+  }
+]

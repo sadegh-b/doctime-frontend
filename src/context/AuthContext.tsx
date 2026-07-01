@@ -1,76 +1,64 @@
-﻿// src/context/AuthContext.tsx
-import { createContext, useContext, useEffect, useState } from "react";
-import axiosClient from "../api/axiosClient";
+﻿import { createContext, useContext, useState } from "react"
 
 type User = {
-  id: number;
-  name: string;
-  email: string;
-  role: string;
-};
+  id: number
+  name: string
+  email: string
+  role: string
+}
 
 type AuthContextType = {
-  user: User | null;
-  loading: boolean;
-  login: (token: string) => void;
-  logout: () => void;
-};
+  user: User | null
+  loginUser: (user: User) => void
+  logout: () => void
+}
 
-const AuthContext = createContext<AuthContextType | null>(null);
+const AuthContext = createContext<AuthContextType | null>(null)
 
-export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
-  const [user, setUser] = useState<User | null>(null);
-  const [loading, setLoading] = useState(true);
+export function AuthProvider({ children }: any) {
 
-  const loadUser = async () => {
-    const token = localStorage.getItem("token");
+  const [user, setUser] = useState<User | null>(() => {
 
-    if (!token) {
-      setUser(null);
-      setLoading(false);
-      return;
-    }
+    const saved = localStorage.getItem("user")
 
-    try {
-      // استفاده از axiosClient که اینترسپتور آن به طور خودکار توکن را الصاق می‌کند
-      const res = await axiosClient.get("/auth/me");
-      setUser(res.data);
-    } catch (error) {
-      console.error("خطا در دریافت اطلاعات کاربر:", error);
-      localStorage.removeItem("token");
-      setUser(null);
-    } finally {
-      setLoading(false);
-    }
-  };
+    return saved ? JSON.parse(saved) : null
 
-  const login = (token: string) => {
-    localStorage.setItem("token", token);
-    loadUser();
-  };
+  })
 
-  const logout = () => {
-    localStorage.removeItem("token");
-    setUser(null);
-  };
+  function loginUser(user: User) {
 
-  useEffect(() => {
-    loadUser();
-  }, []);
+    setUser(user)
 
-  return (
-    <AuthContext.Provider value={{ user, loading, login, logout }}>
-      {children}
-    </AuthContext.Provider>
-  );
-};
+    localStorage.setItem("user", JSON.stringify(user))
 
-export const useAuth = () => {
-  const context = useContext(AuthContext);
-
-  if (!context) {
-    throw new Error("useAuth must be used inside AuthProvider");
   }
 
-  return context;
-};
+  function logout() {
+
+    setUser(null)
+
+    localStorage.removeItem("user")
+
+  }
+
+  return (
+
+    <AuthContext.Provider
+      value={{ user, loginUser, logout }}
+    >
+      {children}
+    </AuthContext.Provider>
+
+  )
+}
+
+export function useAuth() {
+
+  const context = useContext(AuthContext)
+
+  if (!context) {
+    throw new Error("useAuth must be inside AuthProvider")
+  }
+
+  return context
+}
